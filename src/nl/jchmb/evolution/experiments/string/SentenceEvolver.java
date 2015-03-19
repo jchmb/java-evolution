@@ -27,7 +27,7 @@ public class SentenceEvolver extends Evolver<List<Character>, String> {
 		addOperator(
 				new CloneOperator<List<Character>>(
 						new SentenceCloner(),
-						4
+						9
 				)
 		);
 		addOperator(
@@ -35,7 +35,7 @@ public class SentenceEvolver extends Evolver<List<Character>, String> {
 		);
 		addOperator(
 				new SelectionOperator<List<Character>, String>(
-						0.25f,
+						0.1f,
 						new SentenceExpressor(),
 						new SentenceEvaluator(STRING_TO_MATCH)
 				)
@@ -44,7 +44,7 @@ public class SentenceEvolver extends Evolver<List<Character>, String> {
 	
 	public static void main(String[] args) {
 		Population<List<Character>> population;
-		SentenceEvolver evolver = new SentenceEvolver(25);
+		SentenceEvolver evolver = new SentenceEvolver(35);
 		evolver.evolve();
 		population = evolver.getPopulation();
 		for (List<Character> sentence : population) {

@@ -19,6 +19,7 @@ public class CloneOperator<G> implements Operator<G> {
 	public Population<G> apply(Population<G> population) {
 		List<G> genotypes = new ArrayList<G>();
 		for (G genotype : population) {
+			genotypes.add(genotype);
 			for (int i = 0; i < numClones; i++) {
 				genotypes.add(cloner.clone(genotype));
 			}

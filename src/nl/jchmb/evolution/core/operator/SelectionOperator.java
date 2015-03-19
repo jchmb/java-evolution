@@ -1,9 +1,10 @@
 package nl.jchmb.evolution.core.operator;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nl.jchmb.evolution.core.Evaluator;
 import nl.jchmb.evolution.core.Expressor;
@@ -30,12 +31,25 @@ public class SelectionOperator<G, P> implements Operator<G> {
 	}
 	
 	private class FitnessComparator implements Comparator<G> {
+		private Map<G, Float> fitnessMap;
+		
+		public FitnessComparator() {
+			fitnessMap = new HashMap<G, Float>();
+		}
+		
+		private float getFitness(G g) {
+			if (!fitnessMap.containsKey(g)) {
+				fitnessMap.put(g, evaluator.evaluate(expressor.express(g)));
+			}
+			return fitnessMap.get(g);
+		}
+		
 		@Override
 		public int compare(G g1, G g2) {
 			float f1, f2;
 			
-			f1 = evaluator.evaluate(expressor.express(g1));
-			f2 = evaluator.evaluate(expressor.express(g2));
+			f1 = getFitness(g1);
+			f2 = getFitness(g2);
 			
 			return f1 == f2 ? 0 : (f1 > f2 ? 1 : -1);
 		}
