@@ -4,15 +4,16 @@ import java.util.Random;
 
 import nl.jchmb.generic.generator.Generator;
 
-public class ByteGenerator implements Generator<Integer> {
+public class BitGenerator implements Generator<Bit> {
 	private Random random;
 	
-	public ByteGenerator() {
+	public BitGenerator() {
 		random = new Random();
 	}
 	
 	@Override
-	public Integer generate() {
-		return random.nextInt(256);
+	public Bit generate() {
+		int r = random.nextInt(2);
+		return r == 1 ? Bit.ONE : Bit.ZERO;
 	}
 }

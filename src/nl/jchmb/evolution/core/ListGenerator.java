@@ -3,6 +3,8 @@ package nl.jchmb.evolution.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.jchmb.generic.generator.Generator;
+
 public class ListGenerator<T> implements Generator<List<T>> {
 	private Generator<T> generator;
 	private int populationSize;

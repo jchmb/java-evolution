@@ -3,7 +3,7 @@ package nl.jchmb.evolution.experiments.string;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.jchmb.utils.Cloner;
+import nl.jchmb.generic.cloner.Cloner;
 
 public class SentenceCloner implements Cloner<List<Character>> {
 	@Override

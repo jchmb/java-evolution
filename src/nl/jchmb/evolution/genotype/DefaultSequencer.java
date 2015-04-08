@@ -90,12 +90,10 @@ public class DefaultSequencer implements Sequencer {
 	}
 	
 	public static void main(String[] args) {
-		SimpleRNA rna = SimpleRNA.getRandomSample(10000);
-		Sequencer sequencer = new DefaultSequencer();
-		System.out.println(rna);
-		List<Sequence> sequences = sequencer.sequence(rna);
-		for (Sequence sequence : sequences) {
-			System.out.println(sequence);
+		double a = 2.0d;
+		for (int i = 0; i < 1000; i++) {
+			a = Math.sqrt(a);
 		}
+		System.out.println(a);
 	}
 }

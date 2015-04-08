@@ -2,7 +2,7 @@ package nl.jchmb.evolution.genotype.string;
 
 import java.util.Random;
 
-import nl.jchmb.evolution.core.Generator;
+import nl.jchmb.generic.generator.Generator;
 
 public class CharacterGenerator implements Generator<Character> {
 	private Random random;

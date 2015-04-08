@@ -3,7 +3,7 @@ package nl.jchmb.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import nl.jchmb.evolution.core.Generator;
+import nl.jchmb.generic.generator.Generator;
 
 public class AggregateGenerator<T> implements Generator<T> {
 	private Collection<Generator<T>> generators;

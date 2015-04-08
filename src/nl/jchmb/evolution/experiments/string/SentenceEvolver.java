@@ -2,16 +2,16 @@ package nl.jchmb.evolution.experiments.string;
 
 import java.util.List;
 
-import nl.jchmb.evolution.core.Evolver;
 import nl.jchmb.evolution.core.ListGenerator;
 import nl.jchmb.evolution.core.Population;
 import nl.jchmb.evolution.core.PopulationGenerator;
-import nl.jchmb.evolution.core.operator.CloneOperator;
-import nl.jchmb.evolution.core.operator.ListMutationOperator;
-import nl.jchmb.evolution.core.operator.SelectionOperator;
+import nl.jchmb.evolution.evolver.SimpleEvolver;
 import nl.jchmb.evolution.genotype.string.AlphabetGenerator;
+import nl.jchmb.evolution.operator.PlanetCloneOperator;
+import nl.jchmb.evolution.operator.ListMutationOperator;
+import nl.jchmb.evolution.operator.SelectionOperator;
 
-public class SentenceEvolver extends Evolver<List<Character>, String> {
+public class SentenceEvolver extends SimpleEvolver<List<Character>, String> {
 	private static final String STRING_TO_MATCH = "matchthisstring";
 	
 	public SentenceEvolver(int populationSize) {
@@ -25,7 +25,7 @@ public class SentenceEvolver extends Evolver<List<Character>, String> {
 				).generate()
 		);
 		addOperator(
-				new CloneOperator<List<Character>>(
+				new PlanetCloneOperator<List<Character>>(
 						new SentenceCloner(),
 						9
 				)

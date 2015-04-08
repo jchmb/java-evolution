@@ -3,8 +3,8 @@ package nl.jchmb.evolution.genotype.rna;
 import java.util.Random;
 
 import nl.jchmb.evolution.core.Population;
-import nl.jchmb.evolution.core.operator.Operator;
 import nl.jchmb.evolution.genotype.Base;
+import nl.jchmb.evolution.operator.Operator;
 
 public class SimpleRNAMutationOperator implements Operator<SimpleRNA> {
 	private Random random;

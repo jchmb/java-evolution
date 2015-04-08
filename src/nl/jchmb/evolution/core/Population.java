@@ -4,37 +4,37 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import nl.jchmb.evolution.core.operator.Operator;
+import nl.jchmb.evolution.environment.Environment;
+import nl.jchmb.evolution.operator.Operator;
+import nl.jchmb.evolution.replicator.Replicator;
 
-public class Population<G> implements Iterable<G> {
-	private List<G> genotypes;
+public class Population<G, P, R extends Replicator<G, P>> implements Iterable<R> {
+	private List<R> replicators;
+	private Environment<G, P, R> environment;
 	
-	public Population(List<G> genotypes) {
-		this.genotypes = genotypes;
+	public Population(List<R> replicators, Environment<G, P, R> environment) {
+		this.replicators = replicators;
+		this.environment = environment;
 	}
 	
-	public Population() {
-		this(new ArrayList<G>());
-	}
-	
-	public Population<G> apply(Operator<G> operator) {
+	public Population<G, P, R> apply(Operator<G, P, R> operator) {
 		return operator.apply(this);
-	}
-	
-	public Population<G> copy() {
-		return new Population<G>(new ArrayList<G>(genotypes));
 	}
 
 	@Override
-	public Iterator<G> iterator() {
-		return genotypes.iterator();
+	public Iterator<R> iterator() {
+		return replicators.iterator();
 	}
 	
-	public List<G> getGenotypes() {
-		return genotypes;
+	public List<R> getReplicators() {
+		return replicators;
 	}
 	
 	public int getSize() {
-		return genotypes.size();
+		return replicators.size();
+	}
+	
+	public Environment<G, P, R> getEnvironment() {
+		return environment;
 	}
 }
